@@ -95,8 +95,6 @@
             padding-right: 10px;
             color: #fff;
         }
-
-
     </style>
 </head>
     <body>
@@ -104,40 +102,73 @@
             <h1>Desafio Calculadora</h1>
 
             <div class="calculadora">
-                <p id="idResultado">5</p>
+                <p id="idResultado"></p>
                 <table>
                     <tr>
-                        <td><button class="botao1">C</button></td>
+                        <td><button class="botao1" onclick="limparTela()">C</button></td>
                         <td><button class="botao1">+/-</button></td>
                         <td><button class="botao1">%</button></td>
                         <td><button class="botao2">/</button></td>
                     </tr>
                     <tr>
-                        <td><button class="botao3">7</button></td>
-                        <td><button class="botao3">8</button></td>
-                        <td><button class="botao3">9</button></td>
+                        <td><button class="botao3" onclick="mostrarNum(7)">7</button></td>
+                        <td><button class="botao3" onclick="mostrarNum(8)">8</button></td>
+                        <td><button class="botao3" onclick="mostrarNum(9)">9</button></td>
                         <td><button class="botao2">x</button></td>
                     </tr>
                     <tr>
-                        <td><button class="botao3">4</button></td>
-                        <td><button class="botao3">5</button></td>
-                        <td><button class="botao3">6</button></td>
+                        <td><button class="botao3" onclick="mostrarNum(4)">4</button></td>
+                        <td><button class="botao3" onclick="mostrarNum(5)">5</button></td>
+                        <td><button class="botao3" onclick="mostrarNum(6)">6</button></td>
                         <td><button class="botao2">-</button></td>
                     </tr>
                     <tr>
-                        <td><button class="botao3">1</button></td>
-                        <td><button class="botao3">2</button></td>
-                        <td><button class="botao3">3</button></td>
+                        <td><button class="botao3" onclick="mostrarNum(1)">1</button></td>
+                        <td><button class="botao3" onclick="mostrarNum(2)">2</button></td>
+                        <td><button class="botao3" onclick="mostrarNum(3)">3</button></td>
                         <td><button class="botao2">+</button></td>
                     </tr> 
                     <tr>
-                        <td colspan="2"><button  class="botao4">0</button></td>
-                        <td><button class="botao3">,</button></td>
+                        <td colspan="2"><button  class="botao4" onclick="mostrarNum(0)">0</button></td>
+                        <td><button class="botao3" onclick="mostrarNum(',')">,</button></td>
                         <td><button class="botao2">=</button></td>
                     </tr>
                 </table>
             </div>
         </div>
-        
+        <script>
+            
+            function mostrarNum(numero){
+
+                /*
+                    Função que faz com que o numero clicado no botão apareça
+                    na tela, e se clicar dois botões em sequencia "concatena" os dois
+                    valores. Ou seja, junta o valor que está no vistor com o novo valor digitado.
+                    -- a variável 'numeroTela' é o valor que ja esta no visor (0 por default)
+                    -- a variável 'numero' é o valor do botão (passado como parametro).
+                */
+
+                var numeroTela = document.getElementById('idResultado').innerHTML 
+                document.getElementById("idResultado").innerHTML = numeroTela + numero
+
+            }
+
+            function limparTela(){
+
+                /*
+                    Criar função para o botao "C" (clear) que irá limpar os valores
+                    do visor.
+                */
+
+                document.getElementById("idResultado").innerHTML = ""
+
+            }
+
+
+
+
+
+        </script>
     </body>
+    
 </html>
