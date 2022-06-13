@@ -107,7 +107,7 @@
                     <tr>
                         <td><button class="botao1" onclick="limparTela()">C</button></td>
                         <td><button class="botao1" id="idMaisMenos" onclick="mudarSinal(num1)">+/-</button></td>
-                        <td><button class="botao1" id="idPorcentagem" name="nmPorcentagem">%</button></td>
+                        <td><button class="botao1" id="idPorcentagem" name="nmPorcentagem" onclick="porcentagem()">%</button></td>
                         <td><button class="botao2" id="idDivisao" name="nmDivisao" onclick="funcaoDivisao()">/</button></td>
                     </tr>
                     <tr>
@@ -287,6 +287,20 @@
 
             }
 
+            function porcentagem(){
+
+                /*
+                    funcao para o botao de porcentagem, transforma o numero do visor 
+                    em numeros percentuais.
+                */
+
+                num1 = Number(document.getElementById("idResultado").innerHTML) 
+
+                document.getElementById("idResultado").innerHTML = num1 / 100 
+
+
+
+            }
 
 
         </script>
