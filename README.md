@@ -11,4 +11,4 @@ A minha proposta foi recriar o layout da calculadora do Iphone, e suas funcional
 
 O resultado final ficou conforme a imagem abaixo:
 
-![calculadora]('/Users/andrepavan/Desktop/Dev/desafioCalculadora/calculadoraImg.png')
+![calculadora](https://github.com/andrenp2/desafioCalculadora/blob/main/calculadoraImg.png)
