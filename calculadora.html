@@ -106,31 +106,31 @@
                 <table>
                     <tr>
                         <td><button class="botao1" onclick="limparTela()">C</button></td>
-                        <td><button class="botao1">+/-</button></td>
-                        <td><button class="botao1">%</button></td>
-                        <td><button class="botao2">/</button></td>
+                        <td><button class="botao1" id="idMaisMenos">+/-</button></td>
+                        <td><button class="botao1" id="idPorcentagem" name="nmPorcentagem">%</button></td>
+                        <td><button class="botao2" id="idDivisao" name="nmDivisao" onclick="calcular()">/</button></td>
                     </tr>
                     <tr>
                         <td><button class="botao3" onclick="mostrarNum(7)">7</button></td>
                         <td><button class="botao3" onclick="mostrarNum(8)">8</button></td>
                         <td><button class="botao3" onclick="mostrarNum(9)">9</button></td>
-                        <td><button class="botao2">x</button></td>
+                        <td><button class="botao2" id="idMultiplicacao" name="nmMultiplicacao">x</button></td>
                     </tr>
                     <tr>
                         <td><button class="botao3" onclick="mostrarNum(4)">4</button></td>
                         <td><button class="botao3" onclick="mostrarNum(5)">5</button></td>
                         <td><button class="botao3" onclick="mostrarNum(6)">6</button></td>
-                        <td><button class="botao2">-</button></td>
+                        <td><button class="botao2" id="idSubtracao" name="nmSubtracao">-</button></td>
                     </tr>
                     <tr>
                         <td><button class="botao3" onclick="mostrarNum(1)">1</button></td>
                         <td><button class="botao3" onclick="mostrarNum(2)">2</button></td>
                         <td><button class="botao3" onclick="mostrarNum(3)">3</button></td>
-                        <td><button class="botao2">+</button></td>
+                        <td><button class="botao2" id="idSoma" name="nmSoma">+</button></td>
                     </tr> 
                     <tr>
                         <td colspan="2"><button  class="botao4" onclick="mostrarNum(0)">0</button></td>
-                        <td><button class="botao3" onclick="mostrarNum(',')">,</button></td>
+                        <td><button class="botao3" onclick="virgula()">,</button></td>
                         <td><button class="botao2">=</button></td>
                     </tr>
                 </table>
@@ -151,6 +151,7 @@
                 var numeroTela = document.getElementById('idResultado').innerHTML 
                 document.getElementById("idResultado").innerHTML = numeroTela + numero
 
+                
             }
 
             function limparTela(){
@@ -164,6 +165,31 @@
 
             }
 
+            function calcular(){
+
+                var b = document.getElementsByName('nmDivisao').entries
+                var b1 = document.getElementById("idMultiplicacao").click
+                var b2 = document.getElementById("idSubtracao").click
+                var b3 = document.getElementById("idSoma").click 
+
+                console.log('BOTAO CLICADO', b, b1,b2,b3)
+
+            }
+
+            function virgula(){
+
+                /*
+                    Essa funcao insere a virgula apenas uma vez, verifica se ja existe na string
+                    caso não exista ( indexOf = -1 ) ela deixa inserir, caso contrario, não.
+                */
+
+                var numeroTela = document.getElementById('idResultado').innerHTML 
+                
+                if (numeroTela.indexOf(",") == -1){
+                document.getElementById("idResultado").innerHTML = numeroTela + ","
+                }
+                
+            }
 
 
 
