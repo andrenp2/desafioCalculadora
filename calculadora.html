@@ -106,38 +106,41 @@
                 <table>
                     <tr>
                         <td><button class="botao1" onclick="limparTela()">C</button></td>
-                        <td><button class="botao1" id="idMaisMenos">+/-</button></td>
+                        <td><button class="botao1" id="idMaisMenos" onclick="mudarSinal(num1)">+/-</button></td>
                         <td><button class="botao1" id="idPorcentagem" name="nmPorcentagem">%</button></td>
-                        <td><button class="botao2" id="idDivisao" name="nmDivisao" onclick="calcular()">/</button></td>
+                        <td><button class="botao2" id="idDivisao" name="nmDivisao" onclick="funcaoDivisao()">/</button></td>
                     </tr>
                     <tr>
                         <td><button class="botao3" onclick="mostrarNum(7)">7</button></td>
                         <td><button class="botao3" onclick="mostrarNum(8)">8</button></td>
                         <td><button class="botao3" onclick="mostrarNum(9)">9</button></td>
-                        <td><button class="botao2" id="idMultiplicacao" name="nmMultiplicacao">x</button></td>
+                        <td><button class="botao2" id="idMultiplicacao" name="nmMultiplicacao" onclick="funcaoMultiplicacao()">x</button></td>
                     </tr>
                     <tr>
                         <td><button class="botao3" onclick="mostrarNum(4)">4</button></td>
                         <td><button class="botao3" onclick="mostrarNum(5)">5</button></td>
                         <td><button class="botao3" onclick="mostrarNum(6)">6</button></td>
-                        <td><button class="botao2" id="idSubtracao" name="nmSubtracao">-</button></td>
+                        <td><button class="botao2" id="idSubtracao" name="nmSubtracao" onclick="funcaoSubtracao()">-</button></td>
                     </tr>
                     <tr>
                         <td><button class="botao3" onclick="mostrarNum(1)">1</button></td>
                         <td><button class="botao3" onclick="mostrarNum(2)">2</button></td>
                         <td><button class="botao3" onclick="mostrarNum(3)">3</button></td>
-                        <td><button class="botao2" id="idSoma" name="nmSoma">+</button></td>
+                        <td><button class="botao2" id="idSoma" name="nmSoma" onclick="funcaoSoma()">+</button></td>
                     </tr> 
                     <tr>
                         <td colspan="2"><button  class="botao4" onclick="mostrarNum(0)">0</button></td>
-                        <td><button class="botao3" onclick="virgula()">,</button></td>
-                        <td><button class="botao2">=</button></td>
+                        <td><button class="botao3" onclick="virgula()">.</button></td>
+                        <td><button class="botao2" onclick="resultado(num1, operacao)">=</button></td>
                     </tr>
                 </table>
             </div>
         </div>
         <script>
             
+            var num1 = 0 // inicializando a variável de entrada 
+            var operacao = '' // inicializando a string da operacao desejada
+
             function mostrarNum(numero){
 
                 /*
@@ -165,16 +168,98 @@
 
             }
 
-            function calcular(){
+            function funcaoSoma(){
 
-                var b = document.getElementsByName('nmDivisao').entries
-                var b1 = document.getElementById("idMultiplicacao").click
-                var b2 = document.getElementById("idSubtracao").click
-                var b3 = document.getElementById("idSoma").click 
+                /*
+                    Essa funcao serve para gravar o primeiro numero digitado da operacao
+                    e o registrar que deseja-se somar os numeros.
+                */
 
-                console.log('BOTAO CLICADO', b, b1,b2,b3)
+                num1 = Number(document.getElementById("idResultado").innerHTML) 
+                operacao = 'soma'
+
+                document.getElementById("idResultado").innerHTML = ""
+
+                return num1, operacao
 
             }
+
+            function funcaoSubtracao(){
+
+                /*
+                    Essa funcao serve para gravar o primeiro numero digitado da operacao
+                    e o registrar que deseja-se somar os numeros.
+                */
+
+                num1 = Number(document.getElementById("idResultado").innerHTML) 
+                operacao = 'subtracao'
+
+                document.getElementById("idResultado").innerHTML = ""
+
+                return num1, operacao
+
+            }
+            function funcaoDivisao(){
+
+                /*
+                    Essa funcao serve para gravar o primeiro numero digitado da operacao
+                    e o registrar que deseja-se somar os numeros.
+                */
+
+                num1 = Number(document.getElementById("idResultado").innerHTML) 
+                operacao = 'divisao'
+
+                document.getElementById("idResultado").innerHTML = ""
+
+                return num1, operacao
+
+                }
+            
+            function funcaoMultiplicacao(){
+
+                /*
+                    Essa funcao serve para gravar o primeiro numero digitado da operacao
+                    e o registrar que deseja-se somar os numeros.
+                */
+
+                num1 = Number(document.getElementById("idResultado").innerHTML) 
+                operacao = 'multiplicacao'
+
+                document.getElementById("idResultado").innerHTML = ""
+
+                return num1, operacao
+
+                }
+
+            function resultado(num1, operacao){
+
+                console.log(num1, operacao)
+
+                var num2 = Number(document.getElementById("idResultado").innerHTML)
+
+                if (operacao=='soma'){
+                    result = num1 + num2
+
+                }else if (operacao=='divisao'){
+                    if (num2 != 0){
+                        result = num1 / num2
+                    }
+                    else{result = 'Erro'}
+
+                }else if(operacao == 'multiplicacao'){
+                    result = num1 * num2
+                
+                }else if(operacao == 'subtracao'){
+                    result = num1 - num2
+                }else{
+                    result = "Error"
+                }
+
+                document.getElementById("idResultado").innerHTML = result
+
+            }
+
+
 
             function virgula(){
 
@@ -185,12 +270,22 @@
 
                 var numeroTela = document.getElementById('idResultado').innerHTML 
                 
-                if (numeroTela.indexOf(",") == -1){
-                document.getElementById("idResultado").innerHTML = numeroTela + ","
+                if (numeroTela.indexOf(".") == -1){
+                document.getElementById("idResultado").innerHTML = numeroTela + "."
                 }
                 
             }
 
+            function mudarSinal(num1){
+                /* Funcao para funcionar o botão +/- que troca o atual sinal
+                    do numero digitado no vistor
+                */
+
+                num1 = Number(document.getElementById("idResultado").innerHTML) 
+
+                document.getElementById("idResultado").innerHTML = ( -1 * num1 )
+
+            }
 
 
 
